@@ -85,6 +85,14 @@ function keys.apply_to_config(config)
 			mods = "CMD",
 			action = wezterm.action.CloseCurrentPane({ confirm = true }),
 		},
+		-- Make Cmd-Left and Cmd-Right move cursor to the start and end of the line
+		{ key = "LeftArrow", mods = "CMD", action = act.SendString("\x01") },
+		{ key = "RightArrow", mods = "CMD", action = act.SendString("\x05") },
+		-- Make Opt-Left and Opt-Right move cursor backward-word and forward-word
+		{ key = "LeftArrow", mods = "OPT", action = act.SendString("\x1bb") },
+		{ key = "RightArrow", mods = "OPT", action = act.SendString("\x1bf") },
+		-- Make Cmd-Backspace delete from start of line to cursor. Needs keybinding in shell config
+		{ key = "Backspace", mods = "CMD", action = act.SendString("\x1b[1;9H") },
 	}
 
 	-- Disables dead keys (~, ^, ´, `) on MacOS
