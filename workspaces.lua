@@ -17,8 +17,8 @@ wezterm.on("gui-startup", function(cmd)
 		args = args,
 	})
 
-	-- Toggle fullscreen on startup
-	window:gui_window():toggle_fullscreen()
+	-- Maximize window on startup
+	window:gui_window():maximize()
 
 	local right_pane = pane:split({
 		direction = "Right",
